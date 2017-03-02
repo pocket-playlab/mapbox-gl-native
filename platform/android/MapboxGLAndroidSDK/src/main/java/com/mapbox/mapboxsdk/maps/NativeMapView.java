@@ -62,18 +62,11 @@ final class NativeMapView {
   private MapboxMap.SnapshotReadyCallback snapshotReadyCallback;
 
   //
-  // Static methods
-  //
-
-  static {
-    System.loadLibrary("mapbox-gl");
-  }
-
-  //
   // Constructors
   //
 
-  public NativeMapView(MapView mapView) {
+  public NativeMapView(MapView mapView, Loadable nativeLibrary) {
+    nativeLibrary.load();
     Context context = mapView.getContext();
     fileSource = FileSource.getInstance(context);
 

@@ -47,10 +47,10 @@ class AnnotationManager {
   private MapboxMap mapboxMap;
   private MapboxMap.OnMarkerClickListener onMarkerClickListener;
 
-  AnnotationManager(NativeMapView view, MapView mapView, MarkerViewManager markerViewManager) {
+  AnnotationManager(NativeMapView view, MapView mapView, MarkerViewManager markerViewManager, IconManager iconManager) {
     this.nativeMapView = view;
     this.mapView = mapView;
-    this.iconManager = new IconManager(nativeMapView);
+    this.iconManager = iconManager;
     this.markerViewManager = markerViewManager;
     if (view != null) {
       // null checking needed for unit tests
