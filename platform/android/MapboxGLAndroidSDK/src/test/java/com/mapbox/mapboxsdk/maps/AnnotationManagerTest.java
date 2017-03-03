@@ -1,5 +1,8 @@
 package com.mapbox.mapboxsdk.maps;
 
+import android.support.v4.util.LongSparseArray;
+
+import com.mapbox.mapboxsdk.annotations.Annotation;
 import com.mapbox.mapboxsdk.annotations.BaseMarkerOptions;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -24,8 +27,10 @@ public class AnnotationManagerTest {
     MapView aMapView = mock(MapView.class);
     MarkerViewManager aMarkerViewManager = mock(MarkerViewManager.class);
     IconManager aIconManager = mock(IconManager.class);
+    LongSparseArray<Annotation> annotationsArray = new LongSparseArray<>();
+    Annotations annotations = new AnnotationsFunctions(aNativeMapView, annotationsArray);
     AnnotationManager annotationManager = new AnnotationManager(aNativeMapView, aMapView, aMarkerViewManager,
-      aIconManager);
+      aIconManager, annotations, annotationsArray);
     Marker aMarker = mock(Marker.class);
     long aId = 5L;
     when(aNativeMapView.addMarker(aMarker)).thenReturn(aId);
@@ -45,8 +50,10 @@ public class AnnotationManagerTest {
     MapView aMapView = mock(MapView.class);
     MarkerViewManager aMarkerViewManager = mock(MarkerViewManager.class);
     IconManager aIconManager = mock(IconManager.class);
+    LongSparseArray<Annotation> annotationsArray = new LongSparseArray<>();
+    Annotations annotations = new AnnotationsFunctions(aNativeMapView, annotationsArray);
     AnnotationManager annotationManager = new AnnotationManager(aNativeMapView, aMapView, aMarkerViewManager,
-      aIconManager);
+      aIconManager, annotations, annotationsArray);
     long firstId = 1L;
     long secondId = 2L;
     List<BaseMarkerOptions> markerList = new ArrayList<>();

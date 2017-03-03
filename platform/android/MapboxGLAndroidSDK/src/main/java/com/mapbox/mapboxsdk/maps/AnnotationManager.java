@@ -41,17 +41,21 @@ class AnnotationManager {
   private final IconManager iconManager;
   private final InfoWindowManager infoWindowManager = new InfoWindowManager();
   private final MarkerViewManager markerViewManager;
-  private final LongSparseArray<Annotation> annotations = new LongSparseArray<>();
+  private final LongSparseArray<Annotation> annotations;
   private final List<Marker> selectedMarkers = new ArrayList<>();
 
   private MapboxMap mapboxMap;
   private MapboxMap.OnMarkerClickListener onMarkerClickListener;
+  private Annotations functions;
 
-  AnnotationManager(NativeMapView view, MapView mapView, MarkerViewManager markerViewManager, IconManager iconManager) {
+  AnnotationManager(NativeMapView view, MapView mapView, MarkerViewManager markerViewManager, IconManager
+    iconManager, Annotations functions, LongSparseArray<Annotation> annotationsArray) {
     this.nativeMapView = view;
     this.mapView = mapView;
-    this.iconManager = iconManager;
     this.markerViewManager = markerViewManager;
+    this.iconManager = iconManager;
+    this.functions = functions;
+    this.annotations = annotationsArray;
     if (view != null) {
       // null checking needed for unit tests
       nativeMapView.addOnMapChangedListener(markerViewManager);
@@ -76,15 +80,11 @@ class AnnotationManager {
   //
 
   Annotation getAnnotation(long id) {
-    return annotations.get(id);
+    return functions.getAnnotation(id);
   }
 
   List<Annotation> getAnnotations() {
-    List<Annotation> annotations = new ArrayList<>();
-    for (int i = 0; i < this.annotations.size(); i++) {
-      annotations.add(this.annotations.get(this.annotations.keyAt(i)));
-    }
-    return annotations;
+    return functions.getAnnotations();
   }
 
   void removeAnnotation(@NonNull Annotation annotation) {
@@ -95,25 +95,15 @@ class AnnotationManager {
         markerViewManager.removeMarkerView((MarkerView) marker);
       }
     }
-    long id = annotation.getId();
-    if (nativeMapView != null) {
-      nativeMapView.removeAnnotation(id);
-    }
-    annotations.remove(id);
+    functions.removeAnnotation(annotation);
   }
 
   void removeAnnotation(long id) {
-    if (nativeMapView != null) {
-      nativeMapView.removeAnnotation(id);
-    }
-    annotations.remove(id);
+    functions.removeAnnotation(id);
   }
 
   void removeAnnotations(@NonNull List<? extends Annotation> annotationList) {
-    int count = annotationList.size();
-    long[] ids = new long[count];
-    for (int i = 0; i < count; i++) {
-      Annotation annotation = annotationList.get(i);
+    for (Annotation annotation : annotationList) {
       if (annotation instanceof Marker) {
         Marker marker = (Marker) annotation;
         marker.hideInfoWindow();
@@ -121,16 +111,8 @@ class AnnotationManager {
           markerViewManager.removeMarkerView((MarkerView) marker);
         }
       }
-      ids[i] = annotationList.get(i).getId();
     }
-
-    if (nativeMapView != null) {
-      nativeMapView.removeAnnotations(ids);
-    }
-
-    for (long id : ids) {
-      annotations.remove(id);
-    }
+    functions.removeAnnotations(annotationList);
   }
 
   void removeAnnotations() {
@@ -149,11 +131,7 @@ class AnnotationManager {
       }
     }
 
-    if (nativeMapView != null) {
-      nativeMapView.removeAnnotations(ids);
-    }
-
-    annotations.clear();
+    functions.removeAnnotations();
   }
 
   //

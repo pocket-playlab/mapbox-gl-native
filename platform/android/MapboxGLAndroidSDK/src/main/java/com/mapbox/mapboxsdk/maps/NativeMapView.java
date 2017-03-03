@@ -38,7 +38,7 @@ import timber.log.Timber;
 
 
 // Class that wraps the native methods for convenience
-final class NativeMapView {
+final class NativeMapView implements Loadable {
 
   // Flag to indicating destroy was called
   private boolean destroyed = false;
@@ -61,12 +61,17 @@ final class NativeMapView {
   // Listener invoked to return a bitmap of the map
   private MapboxMap.SnapshotReadyCallback snapshotReadyCallback;
 
+  @Override
+  public void loadNativeLibrary() {
+    System.loadLibrary("mapbox-gl");
+  }
+
   //
   // Constructors
   //
 
-  public NativeMapView(MapView mapView, Loadable nativeLibrary) {
-    nativeLibrary.load();
+  public NativeMapView(MapView mapView) {
+    loadNativeLibrary();
     Context context = mapView.getContext();
     fileSource = FileSource.getInstance(context);
 
