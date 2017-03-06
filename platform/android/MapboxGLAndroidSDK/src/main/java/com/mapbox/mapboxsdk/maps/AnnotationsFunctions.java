@@ -9,23 +9,23 @@ import com.mapbox.mapboxsdk.annotations.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnotationsFunctions implements Annotations {
+class AnnotationsFunctions implements Annotations {
 
   private final NativeMapView nativeMapView;
   private final LongSparseArray<Annotation> annotations;
 
-  public AnnotationsFunctions(NativeMapView nativeMapView, LongSparseArray<Annotation> annotations) {
+  AnnotationsFunctions(NativeMapView nativeMapView, LongSparseArray<Annotation> annotations) {
     this.nativeMapView = nativeMapView;
     this.annotations = annotations;
   }
 
   @Override
-  public Annotation getAnnotation(long id) {
+  public Annotation obtainBy(long id) {
     return annotations.get(id);
   }
 
   @Override
-  public List<Annotation> getAnnotations() {
+  public List<Annotation> obtainAll() {
     List<Annotation> annotations = new ArrayList<>();
     for (int i = 0; i < this.annotations.size(); i++) {
       annotations.add(this.annotations.get(this.annotations.keyAt(i)));
@@ -34,7 +34,7 @@ public class AnnotationsFunctions implements Annotations {
   }
 
   @Override
-  public void removeAnnotation(long id) {
+  public void removeBy(long id) {
     if (nativeMapView != null) {
       nativeMapView.removeAnnotation(id);
     }
@@ -42,26 +42,13 @@ public class AnnotationsFunctions implements Annotations {
   }
 
   @Override
-  public void removeAnnotation(@NonNull Annotation annotation) {
+  public void removeBy(@NonNull Annotation annotation) {
     long id = annotation.getId();
-    removeAnnotation(id);
+    removeBy(id);
   }
 
   @Override
-  public void removeAnnotations() {
-    int count = annotations.size();
-    long[] ids = new long[count];
-    for (int i = 0; i < count; i++) {
-      ids[i] = annotations.keyAt(i);
-    }
-
-    removeNativeAnnotations(ids);
-
-    annotations.clear();
-  }
-
-  @Override
-  public void removeAnnotations(@NonNull List<? extends Annotation> annotationList) {
+  public void removeBy(@NonNull List<? extends Annotation> annotationList) {
     int count = annotationList.size();
     long[] ids = new long[count];
     for (int i = 0; i < count; i++) {
@@ -73,6 +60,19 @@ public class AnnotationsFunctions implements Annotations {
     for (long id : ids) {
       annotations.remove(id);
     }
+  }
+
+  @Override
+  public void removeAll() {
+    int count = annotations.size();
+    long[] ids = new long[count];
+    for (int i = 0; i < count; i++) {
+      ids[i] = annotations.keyAt(i);
+    }
+
+    removeNativeAnnotations(ids);
+
+    annotations.clear();
   }
 
   private void removeNativeAnnotations(long[] ids) {

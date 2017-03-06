@@ -8,15 +8,15 @@ import com.mapbox.mapboxsdk.annotations.Annotation;
 import java.util.List;
 
 interface Annotations {
-  Annotation getAnnotation(long id);
+  Annotation obtainBy(long id);
 
-  List<Annotation> getAnnotations();
+  List<Annotation> obtainAll();
 
-  void removeAnnotation(long id);
+  void removeBy(long id);
 
-  void removeAnnotation(@NonNull Annotation annotation);
+  void removeBy(@NonNull Annotation annotation);
 
-  void removeAnnotations();
+  void removeBy(@NonNull List<? extends Annotation> annotationList);
 
-  void removeAnnotations(@NonNull List<? extends Annotation> annotationList);
+  void removeAll();
 }
