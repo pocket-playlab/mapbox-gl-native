@@ -469,6 +469,7 @@ RenderData Style::getRenderData(MapDebugOptions debugOptions, float angle) const
         }
 
         for (auto tileIt = sortedTiles.begin(); tileIt != sortedTiles.end(); ++tileIt) {
+//        for (auto tileIt : sortedTiles) {
             auto& tile = tileIt->get();
             if (!tile.tile.isRenderable()) {
                 sortedTiles.erase(tileIt);
@@ -486,7 +487,8 @@ RenderData Style::getRenderData(MapDebugOptions debugOptions, float angle) const
                 for (auto it = sortedTiles.rbegin() + (sortedTiles.end() - tileIt); it != sortedTiles.rend(); ++it) {
                     if (tile.tile.id.isChildOf(it->get().tile.id)) {
                         skip = true;
-                        sortedTiles.erase(--(it.base()));
+//                        sortedTiles.erase(--(it.base()));
+    // TODO commenting this out as a temporary stopgap fix for EXC_BAD_ACCESS error; revisit to fix tile loading
                         break;
                     }
                 }
