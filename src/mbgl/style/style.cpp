@@ -468,8 +468,8 @@ RenderData Style::getRenderData(MapDebugOptions debugOptions, float angle) const
             });
         }
 
+        std::vector<std::reference_wrapper<RenderTile>> sortedTilesForInsertion;
         for (auto tileIt = sortedTiles.begin(); tileIt != sortedTiles.end(); ++tileIt) {
-//        for (auto tileIt : sortedTiles) {
             auto& tile = tileIt->get();
             if (!tile.tile.isRenderable()) {
                 sortedTiles.erase(tileIt);
@@ -484,22 +484,22 @@ RenderData Style::getRenderData(MapDebugOptions debugOptions, float angle) const
                 // Look back through the buckets we decided to render to find out whether there is
                 // already a bucket from this layer that is a parent of this tile. Tiles are ordered
                 // by zoom level when we obtain them from getTiles().
-                for (auto it = sortedTiles.rbegin() + (sortedTiles.end() - tileIt); it != sortedTiles.rend(); ++it) {
+                for (auto it = sortedTilesForInsertion.rbegin(); it != sortedTilesForInsertion.rend(); ++it) {
                     if (tile.tile.id.isChildOf(it->get().tile.id)) {
                         skip = true;
-//                        sortedTiles.erase(--(it.base()));
-    // TODO commenting this out as a temporary stopgap fix for EXC_BAD_ACCESS error; revisit to fix tile loading
                         break;
                     }
                 }
-                if (skip) {
-                    continue;
+                if (!skip) {
+                    sortedTilesForInsertion.emplace_back(tile);
                 }
+            } else {
+                sortedTilesForInsertion.emplace_back(tile);
             }
 
         }
 
-        result.order.emplace_back(*layer, std::move(sortedTiles));
+        result.order.emplace_back(*layer, std::move(sortedTilesForInsertion));
     }
 
     return result;
