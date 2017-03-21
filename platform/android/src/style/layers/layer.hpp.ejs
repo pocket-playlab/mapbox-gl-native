@@ -34,10 +34,14 @@ public:
 
     ~<%- camelize(type) %>Layer();
 
-    // Property getters
+    // Properties
 <% for (const property of properties) { -%>
-    jni::Object<jni::ObjectTag> get<%- camelize(property.name) %>(jni::JNIEnv&);
 
+    jni::Object<jni::ObjectTag> get<%- camelize(property.name) %>(jni::JNIEnv&);
+<% if (property.transition) { -%>
+    void set<%- camelize(property.name) %>Transition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> get<%- camelize(property.name) %>Transition(jni::JNIEnv&);
+<% } -%>
 <% } -%>
     jni::jobject* createJavaPeer(jni::JNIEnv&);
 

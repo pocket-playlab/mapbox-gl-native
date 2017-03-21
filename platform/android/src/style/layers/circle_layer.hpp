@@ -26,27 +26,43 @@ public:
 
     ~CircleLayer();
 
-    // Property getters
+    // Properties
+
     jni::Object<jni::ObjectTag> getCircleRadius(jni::JNIEnv&);
+    void setCircleRadiusTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleRadiusTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleColor(jni::JNIEnv&);
+    void setCircleColorTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleColorTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleBlur(jni::JNIEnv&);
+    void setCircleBlurTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleBlurTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleOpacity(jni::JNIEnv&);
+    void setCircleOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleOpacityTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleTranslate(jni::JNIEnv&);
+    void setCircleTranslateTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleTranslateTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleTranslateAnchor(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCirclePitchScale(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleStrokeWidth(jni::JNIEnv&);
+    void setCircleStrokeWidthTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleStrokeWidthTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleStrokeColor(jni::JNIEnv&);
+    void setCircleStrokeColorTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleStrokeColorTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getCircleStrokeOpacity(jni::JNIEnv&);
-
+    void setCircleStrokeOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getCircleStrokeOpacityTransition(jni::JNIEnv&);
     jni::jobject* createJavaPeer(jni::JNIEnv&);
 
 }; // class CircleLayer

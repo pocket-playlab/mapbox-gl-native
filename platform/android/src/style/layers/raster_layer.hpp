@@ -26,21 +26,35 @@ public:
 
     ~RasterLayer();
 
-    // Property getters
+    // Properties
+
     jni::Object<jni::ObjectTag> getRasterOpacity(jni::JNIEnv&);
+    void setRasterOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterOpacityTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterHueRotate(jni::JNIEnv&);
+    void setRasterHueRotateTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterHueRotateTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterBrightnessMin(jni::JNIEnv&);
+    void setRasterBrightnessMinTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterBrightnessMinTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterBrightnessMax(jni::JNIEnv&);
+    void setRasterBrightnessMaxTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterBrightnessMaxTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterSaturation(jni::JNIEnv&);
+    void setRasterSaturationTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterSaturationTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterContrast(jni::JNIEnv&);
+    void setRasterContrastTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterContrastTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getRasterFadeDuration(jni::JNIEnv&);
-
+    void setRasterFadeDurationTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getRasterFadeDurationTransition(jni::JNIEnv&);
     jni::jobject* createJavaPeer(jni::JNIEnv&);
 
 }; // class RasterLayer

@@ -26,13 +26,19 @@ public:
 
     ~BackgroundLayer();
 
-    // Property getters
+    // Properties
+
     jni::Object<jni::ObjectTag> getBackgroundColor(jni::JNIEnv&);
+    void setBackgroundColorTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getBackgroundColorTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getBackgroundPattern(jni::JNIEnv&);
+    void setBackgroundPatternTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getBackgroundPatternTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getBackgroundOpacity(jni::JNIEnv&);
-
+    void setBackgroundOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay);
+    jni::Array<jni::jlong> getBackgroundOpacityTransition(jni::JNIEnv&);
     jni::jobject* createJavaPeer(jni::JNIEnv&);
 
 }; // class BackgroundLayer

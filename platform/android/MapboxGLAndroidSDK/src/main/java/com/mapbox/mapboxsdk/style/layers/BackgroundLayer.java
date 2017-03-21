@@ -8,6 +8,8 @@ import android.support.annotation.UiThread;
 
 import static com.mapbox.mapboxsdk.utils.ColorUtils.rgbaToColor;
 
+import com.mapbox.mapboxsdk.style.TransitionOptions;
+
 /**
  * The background color or pattern of the map.
  *
@@ -75,6 +77,24 @@ public class BackgroundLayer extends Layer {
     }
   }
 
+  /**
+   * Get the BackgroundColor property transition options
+   *
+   * @return transition options for String
+   */
+  public TransitionOptions getBackgroundColorTransition() {
+    long[] durations = nativeGetBackgroundColorTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the BackgroundColor property transition options
+   *
+   * @param options transition options for String
+   */
+  public void setBackgroundColorTransition(TransitionOptions options) {
+    nativeSetBackgroundColorTransition(options.getDuration(), options.getDelay());
+  }
 
   /**
    * Get the BackgroundPattern property
@@ -87,6 +107,25 @@ public class BackgroundLayer extends Layer {
   }
 
   /**
+   * Get the BackgroundPattern property transition options
+   *
+   * @return transition options for String
+   */
+  public TransitionOptions getBackgroundPatternTransition() {
+    long[] durations = nativeGetBackgroundPatternTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the BackgroundPattern property transition options
+   *
+   * @param options transition options for String
+   */
+  public void setBackgroundPatternTransition(TransitionOptions options) {
+    nativeSetBackgroundPatternTransition(options.getDuration(), options.getDelay());
+  }
+
+  /**
    * Get the BackgroundOpacity property
    *
    * @return property wrapper value around Float
@@ -96,12 +135,42 @@ public class BackgroundLayer extends Layer {
     return (PropertyValue<Float>) new PropertyValue("background-opacity", nativeGetBackgroundOpacity());
   }
 
+  /**
+   * Get the BackgroundOpacity property transition options
+   *
+   * @return transition options for Float
+   */
+  public TransitionOptions getBackgroundOpacityTransition() {
+    long[] durations = nativeGetBackgroundOpacityTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the BackgroundOpacity property transition options
+   *
+   * @param options transition options for Float
+   */
+  public void setBackgroundOpacityTransition(TransitionOptions options) {
+    nativeSetBackgroundOpacityTransition(options.getDuration(), options.getDelay());
+  }
+
   private native Object nativeGetBackgroundColor();
+
+  private native long[] nativeGetBackgroundColorTransition();
+
+  private native void nativeSetBackgroundColorTransition(long duration, long delay);
 
   private native Object nativeGetBackgroundPattern();
 
+  private native long[] nativeGetBackgroundPatternTransition();
+
+  private native void nativeSetBackgroundPatternTransition(long duration, long delay);
+
   private native Object nativeGetBackgroundOpacity();
 
+  private native long[] nativeGetBackgroundOpacityTransition();
+
+  private native void nativeSetBackgroundOpacityTransition(long duration, long delay);
 
   @Override
   protected native void finalize() throws Throwable;

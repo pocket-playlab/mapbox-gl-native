@@ -8,6 +8,8 @@ import android.support.annotation.UiThread;
 
 import static com.mapbox.mapboxsdk.utils.ColorUtils.rgbaToColor;
 
+import com.mapbox.mapboxsdk.style.TransitionOptions;
+
 /**
  * A filled polygon with an optional stroked border.
  *
@@ -111,6 +113,25 @@ public class FillLayer extends Layer {
   }
 
   /**
+   * Get the FillOpacity property transition options
+   *
+   * @return transition options for Float
+   */
+  public TransitionOptions getFillOpacityTransition() {
+    long[] durations = nativeGetFillOpacityTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the FillOpacity property transition options
+   *
+   * @param options transition options for Float
+   */
+  public void setFillOpacityTransition(TransitionOptions options) {
+    nativeSetFillOpacityTransition(options.getDuration(), options.getDelay());
+  }
+
+  /**
    * Get the FillColor property
    *
    * @return property wrapper value around String
@@ -136,6 +157,24 @@ public class FillLayer extends Layer {
     }
   }
 
+  /**
+   * Get the FillColor property transition options
+   *
+   * @return transition options for String
+   */
+  public TransitionOptions getFillColorTransition() {
+    long[] durations = nativeGetFillColorTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the FillColor property transition options
+   *
+   * @param options transition options for String
+   */
+  public void setFillColorTransition(TransitionOptions options) {
+    nativeSetFillColorTransition(options.getDuration(), options.getDelay());
+  }
 
   /**
    * Get the FillOutlineColor property
@@ -163,6 +202,24 @@ public class FillLayer extends Layer {
     }
   }
 
+  /**
+   * Get the FillOutlineColor property transition options
+   *
+   * @return transition options for String
+   */
+  public TransitionOptions getFillOutlineColorTransition() {
+    long[] durations = nativeGetFillOutlineColorTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the FillOutlineColor property transition options
+   *
+   * @param options transition options for String
+   */
+  public void setFillOutlineColorTransition(TransitionOptions options) {
+    nativeSetFillOutlineColorTransition(options.getDuration(), options.getDelay());
+  }
 
   /**
    * Get the FillTranslate property
@@ -172,6 +229,25 @@ public class FillLayer extends Layer {
   @SuppressWarnings("unchecked")
   public PropertyValue<Float[]> getFillTranslate() {
     return (PropertyValue<Float[]>) new PropertyValue("fill-translate", nativeGetFillTranslate());
+  }
+
+  /**
+   * Get the FillTranslate property transition options
+   *
+   * @return transition options for Float[]
+   */
+  public TransitionOptions getFillTranslateTransition() {
+    long[] durations = nativeGetFillTranslateTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the FillTranslate property transition options
+   *
+   * @param options transition options for Float[]
+   */
+  public void setFillTranslateTransition(TransitionOptions options) {
+    nativeSetFillTranslateTransition(options.getDuration(), options.getDelay());
   }
 
   /**
@@ -194,20 +270,58 @@ public class FillLayer extends Layer {
     return (PropertyValue<String>) new PropertyValue("fill-pattern", nativeGetFillPattern());
   }
 
+  /**
+   * Get the FillPattern property transition options
+   *
+   * @return transition options for String
+   */
+  public TransitionOptions getFillPatternTransition() {
+    long[] durations = nativeGetFillPatternTransition();
+    return new TransitionOptions(durations[0], durations[1]);
+  }
+
+  /**
+   * Set the FillPattern property transition options
+   *
+   * @param options transition options for String
+   */
+  public void setFillPatternTransition(TransitionOptions options) {
+    nativeSetFillPatternTransition(options.getDuration(), options.getDelay());
+  }
+
   private native Object nativeGetFillAntialias();
 
   private native Object nativeGetFillOpacity();
 
+  private native long[] nativeGetFillOpacityTransition();
+
+  private native void nativeSetFillOpacityTransition(long duration, long delay);
+
   private native Object nativeGetFillColor();
+
+  private native long[] nativeGetFillColorTransition();
+
+  private native void nativeSetFillColorTransition(long duration, long delay);
 
   private native Object nativeGetFillOutlineColor();
 
+  private native long[] nativeGetFillOutlineColorTransition();
+
+  private native void nativeSetFillOutlineColorTransition(long duration, long delay);
+
   private native Object nativeGetFillTranslate();
+
+  private native long[] nativeGetFillTranslateTransition();
+
+  private native void nativeSetFillTranslateTransition(long duration, long delay);
 
   private native Object nativeGetFillTranslateAnchor();
 
   private native Object nativeGetFillPattern();
 
+  private native long[] nativeGetFillPatternTransition();
+
+  private native void nativeSetFillPatternTransition(long duration, long delay);
 
   @Override
   protected native void finalize() throws Throwable;
