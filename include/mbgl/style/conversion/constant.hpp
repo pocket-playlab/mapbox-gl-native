@@ -95,14 +95,18 @@ struct Converter<Color> {
 template <>
 struct Converter<Position> {
     template <class V>
-    Result<Position> operator()(const V& value) const {
-        Result<std::array<float, 3>> spherical = convert<std::array<float, 3>>(value);
+    optional<Position> operator()(const V& value, Error& error) const {
+        optional<std::array<float, 3>> spherical = convert<std::array<float, 3>>(value, error);
 
         if (!spherical) {
-            return spherical.error();
+            return {};
         }
 
         optional<Position> converted = Position(*spherical);
+        if (!converted) {
+            error = { "value must be a valid position" };
+            return {};
+        }
 
         return *converted;
     }
@@ -131,16 +135,18 @@ struct Converter<std::array<float, 2>> {
 template <>
 struct Converter<std::array<float, 3>> {
     template <class V>
-    Result<std::array<float, 3>> operator()(const V& value) const {
+    optional<std::array<float, 3>> operator()(const V& value, Error& error) const {
         if (!isArray(value) || arrayLength(value) != 3) {
-            return Error { "value must be an array of three numbers" };
+            error = { "value must be an array of three numbers" };
+            return {};
         }
 
         optional<float> first = toNumber(arrayMember(value, 0));
         optional<float> second = toNumber(arrayMember(value, 1));
         optional<float> third = toNumber(arrayMember(value, 2));
         if (!first || !second || !third) {
-            return Error { "value must be an array of three numbers" };
+            error = { "value must be an array of three numbers" };
+            return {};
         }
 
         return std::array<float, 3> {{ *first, *second, *third }};
