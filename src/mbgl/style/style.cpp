@@ -311,6 +311,8 @@ void Style::cascade(const TimePoint& timePoint, MapMode mode) {
     for (const auto& layer : layers) {
         layer->baseImpl->cascade(parameters);
     }
+
+    light.cascade(parameters);
 }
 
 void Style::recalculate(float z, const TimePoint& timePoint, MapMode mode) {
@@ -347,6 +349,8 @@ void Style::recalculate(float z, const TimePoint& timePoint, MapMode mode) {
             }
         }
     }
+
+    light.evaluate(parameters);
 
     // Remove the existing tiles if we didn't end up re-enabling the source.
     for (const auto& source : sources) {
