@@ -1,9 +1,11 @@
 // This file is generated. Edit android/platform/scripts/generate-style-code.js, then run `make android-style-code`.
 
 #include "circle_layer.hpp"
+#include "../conversion/transition_options.hpp"
+#include <mbgl/style/transition_options.hpp>
+
 
 #include <string>
-#include <mbgl/style/transition_options.hpp>
 
 #include "../conversion/property_value.hpp"
 
@@ -41,20 +43,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleRadiusTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleRadiusTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleRadiusTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleRadiusTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleRadiusTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleRadiusTransition(options);
     }
@@ -65,20 +61,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleColorTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleColorTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleColorTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleColorTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleColorTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleColorTransition(options);
     }
@@ -89,20 +79,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleBlurTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleBlurTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleBlurTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleBlurTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleBlurTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleBlurTransition(options);
     }
@@ -113,20 +97,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleOpacityTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleOpacityTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleOpacityTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleOpacityTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleOpacityTransition(options);
     }
@@ -137,20 +115,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleTranslateTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleTranslateTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleTranslateTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleTranslateTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleTranslateTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleTranslateTransition(options);
     }
@@ -173,20 +145,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleStrokeWidthTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleStrokeWidthTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleStrokeWidthTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleStrokeWidthTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleStrokeWidthTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleStrokeWidthTransition(options);
     }
@@ -197,20 +163,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleStrokeColorTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleStrokeColorTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleStrokeColorTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleStrokeColorTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleStrokeColorTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleStrokeColorTransition(options);
     }
@@ -221,20 +181,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> CircleLayer::getCircleStrokeOpacityTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> CircleLayer::getCircleStrokeOpacityTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleStrokeOpacityTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void CircleLayer::setCircleStrokeOpacityTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void CircleLayer::setCircleStrokeOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleStrokeOpacityTransition(options);
     }

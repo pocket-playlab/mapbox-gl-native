@@ -36,7 +36,7 @@ import static org.junit.Assert.*;
 import static com.mapbox.mapboxsdk.style.layers.Property.*;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.*;
 
-import com.mapbox.mapboxsdk.style.TransitionOptions;
+import com.mapbox.mapboxsdk.style.layers.TransitionOptions;
 
 /**
  * Basic smoke tests for FillLayer

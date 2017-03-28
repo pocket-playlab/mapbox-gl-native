@@ -1,4 +1,8 @@
-package com.mapbox.mapboxsdk.style;
+package com.mapbox.mapboxsdk.style.layers;
+
+import com.google.gson.JsonObject;
+import com.mapbox.services.commons.geojson.Feature;
+import com.mapbox.services.commons.geojson.Geometry;
 
 public class TransitionOptions {
 
@@ -8,6 +12,10 @@ public class TransitionOptions {
   public TransitionOptions(long duration, long delay) {
     this.duration = duration;
     this.delay = delay;
+  }
+
+  public static TransitionOptions fromTransitionOptions(long duration, long delay) {
+    return new TransitionOptions(duration, delay);
   }
 
   public long getDuration() {

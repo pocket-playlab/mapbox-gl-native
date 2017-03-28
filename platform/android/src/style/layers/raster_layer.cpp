@@ -1,9 +1,11 @@
 // This file is generated. Edit android/platform/scripts/generate-style-code.js, then run `make android-style-code`.
 
 #include "raster_layer.hpp"
+#include "../conversion/transition_options.hpp"
+#include <mbgl/style/transition_options.hpp>
+
 
 #include <string>
-#include <mbgl/style/transition_options.hpp>
 
 #include "../conversion/property_value.hpp"
 
@@ -41,20 +43,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterOpacityTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterOpacityTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterOpacityTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterOpacityTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterOpacityTransition(options);
     }
@@ -65,20 +61,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterHueRotateTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterHueRotateTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterHueRotateTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterHueRotateTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterHueRotateTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterHueRotateTransition(options);
     }
@@ -89,20 +79,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterBrightnessMinTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterBrightnessMinTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterBrightnessMinTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterBrightnessMinTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterBrightnessMinTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterBrightnessMinTransition(options);
     }
@@ -113,20 +97,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterBrightnessMaxTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterBrightnessMaxTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterBrightnessMaxTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterBrightnessMaxTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterBrightnessMaxTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterBrightnessMaxTransition(options);
     }
@@ -137,20 +115,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterSaturationTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterSaturationTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterSaturationTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterSaturationTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterSaturationTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterSaturationTransition(options);
     }
@@ -161,20 +133,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterContrastTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterContrastTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterContrastTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterContrastTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterContrastTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterContrastTransition(options);
     }
@@ -185,20 +151,14 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Array<jni::jlong> RasterLayer::getRasterFadeDurationTransition(jni::JNIEnv& env) {
+    jni::Object<jni::ObjectTag> RasterLayer::getRasterFadeDurationTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterFadeDurationTransition();
-        jlong durations[2];
-        durations[0] = options.duration.value_or(mbgl::Duration::zero()).count();
-        durations[1] = options.delay.value_or(mbgl::Duration::zero()).count();
-        auto output = jni::Array<jni::jlong>::New(env, 2);
-        jni::SetArrayRegion(env, *output, 0, 2, durations);
-        return output;
+        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
+        return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    void RasterLayer::setRasterFadeDurationTransition(jni::JNIEnv& env, jlong duration, jlong delay) {
-        (void) env;
+    void RasterLayer::setRasterFadeDurationTransition(jni::JNIEnv&, jlong duration, jlong delay) {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterFadeDurationTransition(options);
     }
