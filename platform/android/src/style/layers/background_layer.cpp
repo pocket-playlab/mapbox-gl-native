@@ -107,6 +107,7 @@ namespace android {
         layer.as<mbgl::style::BackgroundLayer>()->BackgroundLayer::setBackgroundOpacityTransition(options);
     }
 
+
     jni::Class<BackgroundLayer> BackgroundLayer::javaClass;
 
     jni::jobject* BackgroundLayer::createJavaPeer(jni::JNIEnv& env) {
@@ -126,15 +127,12 @@ namespace android {
             std::make_unique<BackgroundLayer, JNIEnv&, jni::String>,
             "initialize",
             "finalize",
-
             METHOD(&BackgroundLayer::getBackgroundColorTransition, "nativeGetBackgroundColorTransition"),
             METHOD(&BackgroundLayer::setBackgroundColorTransition, "nativeSetBackgroundColorTransition"),
             METHOD(&BackgroundLayer::getBackgroundColor, "nativeGetBackgroundColor"),
-
             METHOD(&BackgroundLayer::getBackgroundPatternTransition, "nativeGetBackgroundPatternTransition"),
             METHOD(&BackgroundLayer::setBackgroundPatternTransition, "nativeSetBackgroundPatternTransition"),
             METHOD(&BackgroundLayer::getBackgroundPattern, "nativeGetBackgroundPattern"),
-
             METHOD(&BackgroundLayer::getBackgroundOpacityTransition, "nativeGetBackgroundOpacityTransition"),
             METHOD(&BackgroundLayer::setBackgroundOpacityTransition, "nativeSetBackgroundOpacityTransition"),
             METHOD(&BackgroundLayer::getBackgroundOpacity, "nativeGetBackgroundOpacity"));

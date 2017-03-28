@@ -41,13 +41,11 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-
     jni::Object<jni::ObjectTag> LineLayer::getLineJoin(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::LineLayer>()->LineLayer::getLineJoin());
         return jni::Object<jni::ObjectTag>(*converted);
     }
-
 
     jni::Object<jni::ObjectTag> LineLayer::getLineMiterLimit(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
@@ -55,13 +53,11 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-
     jni::Object<jni::ObjectTag> LineLayer::getLineRoundLimit(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::LineLayer>()->LineLayer::getLineRoundLimit());
         return jni::Object<jni::ObjectTag>(*converted);
     }
-
 
     jni::Object<jni::ObjectTag> LineLayer::getLineOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
@@ -140,7 +136,6 @@ namespace android {
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::LineLayer>()->LineLayer::getLineTranslateAnchor());
         return jni::Object<jni::ObjectTag>(*converted);
     }
-
 
     jni::Object<jni::ObjectTag> LineLayer::getLineWidth(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
@@ -286,6 +281,7 @@ namespace android {
         layer.as<mbgl::style::LineLayer>()->LineLayer::setLinePatternTransition(options);
     }
 
+
     jni::Class<LineLayer> LineLayer::javaClass;
 
     jni::jobject* LineLayer::createJavaPeer(jni::JNIEnv& env) {
@@ -305,49 +301,35 @@ namespace android {
             std::make_unique<LineLayer, JNIEnv&, jni::String, jni::String>,
             "initialize",
             "finalize",
-
             METHOD(&LineLayer::getLineCap, "nativeGetLineCap"),
-
             METHOD(&LineLayer::getLineJoin, "nativeGetLineJoin"),
-
             METHOD(&LineLayer::getLineMiterLimit, "nativeGetLineMiterLimit"),
-
             METHOD(&LineLayer::getLineRoundLimit, "nativeGetLineRoundLimit"),
-
             METHOD(&LineLayer::getLineOpacityTransition, "nativeGetLineOpacityTransition"),
             METHOD(&LineLayer::setLineOpacityTransition, "nativeSetLineOpacityTransition"),
             METHOD(&LineLayer::getLineOpacity, "nativeGetLineOpacity"),
-
             METHOD(&LineLayer::getLineColorTransition, "nativeGetLineColorTransition"),
             METHOD(&LineLayer::setLineColorTransition, "nativeSetLineColorTransition"),
             METHOD(&LineLayer::getLineColor, "nativeGetLineColor"),
-
             METHOD(&LineLayer::getLineTranslateTransition, "nativeGetLineTranslateTransition"),
             METHOD(&LineLayer::setLineTranslateTransition, "nativeSetLineTranslateTransition"),
             METHOD(&LineLayer::getLineTranslate, "nativeGetLineTranslate"),
-
             METHOD(&LineLayer::getLineTranslateAnchor, "nativeGetLineTranslateAnchor"),
-
             METHOD(&LineLayer::getLineWidthTransition, "nativeGetLineWidthTransition"),
             METHOD(&LineLayer::setLineWidthTransition, "nativeSetLineWidthTransition"),
             METHOD(&LineLayer::getLineWidth, "nativeGetLineWidth"),
-
             METHOD(&LineLayer::getLineGapWidthTransition, "nativeGetLineGapWidthTransition"),
             METHOD(&LineLayer::setLineGapWidthTransition, "nativeSetLineGapWidthTransition"),
             METHOD(&LineLayer::getLineGapWidth, "nativeGetLineGapWidth"),
-
             METHOD(&LineLayer::getLineOffsetTransition, "nativeGetLineOffsetTransition"),
             METHOD(&LineLayer::setLineOffsetTransition, "nativeSetLineOffsetTransition"),
             METHOD(&LineLayer::getLineOffset, "nativeGetLineOffset"),
-
             METHOD(&LineLayer::getLineBlurTransition, "nativeGetLineBlurTransition"),
             METHOD(&LineLayer::setLineBlurTransition, "nativeSetLineBlurTransition"),
             METHOD(&LineLayer::getLineBlur, "nativeGetLineBlur"),
-
             METHOD(&LineLayer::getLineDasharrayTransition, "nativeGetLineDasharrayTransition"),
             METHOD(&LineLayer::setLineDasharrayTransition, "nativeSetLineDasharrayTransition"),
             METHOD(&LineLayer::getLineDasharray, "nativeGetLineDasharray"),
-
             METHOD(&LineLayer::getLinePatternTransition, "nativeGetLinePatternTransition"),
             METHOD(&LineLayer::setLinePatternTransition, "nativeSetLinePatternTransition"),
             METHOD(&LineLayer::getLinePattern, "nativeGetLinePattern"));

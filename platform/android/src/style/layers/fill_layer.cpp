@@ -41,7 +41,6 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-
     jni::Object<jni::ObjectTag> FillLayer::getFillOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillOpacity());
@@ -144,7 +143,6 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-
     jni::Object<jni::ObjectTag> FillLayer::getFillPattern(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillPattern());
@@ -169,6 +167,7 @@ namespace android {
         layer.as<mbgl::style::FillLayer>()->FillLayer::setFillPatternTransition(options);
     }
 
+
     jni::Class<FillLayer> FillLayer::javaClass;
 
     jni::jobject* FillLayer::createJavaPeer(jni::JNIEnv& env) {
@@ -188,27 +187,20 @@ namespace android {
             std::make_unique<FillLayer, JNIEnv&, jni::String, jni::String>,
             "initialize",
             "finalize",
-
             METHOD(&FillLayer::getFillAntialias, "nativeGetFillAntialias"),
-
             METHOD(&FillLayer::getFillOpacityTransition, "nativeGetFillOpacityTransition"),
             METHOD(&FillLayer::setFillOpacityTransition, "nativeSetFillOpacityTransition"),
             METHOD(&FillLayer::getFillOpacity, "nativeGetFillOpacity"),
-
             METHOD(&FillLayer::getFillColorTransition, "nativeGetFillColorTransition"),
             METHOD(&FillLayer::setFillColorTransition, "nativeSetFillColorTransition"),
             METHOD(&FillLayer::getFillColor, "nativeGetFillColor"),
-
             METHOD(&FillLayer::getFillOutlineColorTransition, "nativeGetFillOutlineColorTransition"),
             METHOD(&FillLayer::setFillOutlineColorTransition, "nativeSetFillOutlineColorTransition"),
             METHOD(&FillLayer::getFillOutlineColor, "nativeGetFillOutlineColor"),
-
             METHOD(&FillLayer::getFillTranslateTransition, "nativeGetFillTranslateTransition"),
             METHOD(&FillLayer::setFillTranslateTransition, "nativeSetFillTranslateTransition"),
             METHOD(&FillLayer::getFillTranslate, "nativeGetFillTranslate"),
-
             METHOD(&FillLayer::getFillTranslateAnchor, "nativeGetFillTranslateAnchor"),
-
             METHOD(&FillLayer::getFillPatternTransition, "nativeGetFillPatternTransition"),
             METHOD(&FillLayer::setFillPatternTransition, "nativeSetFillPatternTransition"),
             METHOD(&FillLayer::getFillPattern, "nativeGetFillPattern"));

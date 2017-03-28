@@ -203,6 +203,7 @@ namespace android {
         layer.as<mbgl::style::RasterLayer>()->RasterLayer::setRasterFadeDurationTransition(options);
     }
 
+
     jni::Class<RasterLayer> RasterLayer::javaClass;
 
     jni::jobject* RasterLayer::createJavaPeer(jni::JNIEnv& env) {
@@ -222,31 +223,24 @@ namespace android {
             std::make_unique<RasterLayer, JNIEnv&, jni::String, jni::String>,
             "initialize",
             "finalize",
-
             METHOD(&RasterLayer::getRasterOpacityTransition, "nativeGetRasterOpacityTransition"),
             METHOD(&RasterLayer::setRasterOpacityTransition, "nativeSetRasterOpacityTransition"),
             METHOD(&RasterLayer::getRasterOpacity, "nativeGetRasterOpacity"),
-
             METHOD(&RasterLayer::getRasterHueRotateTransition, "nativeGetRasterHueRotateTransition"),
             METHOD(&RasterLayer::setRasterHueRotateTransition, "nativeSetRasterHueRotateTransition"),
             METHOD(&RasterLayer::getRasterHueRotate, "nativeGetRasterHueRotate"),
-
             METHOD(&RasterLayer::getRasterBrightnessMinTransition, "nativeGetRasterBrightnessMinTransition"),
             METHOD(&RasterLayer::setRasterBrightnessMinTransition, "nativeSetRasterBrightnessMinTransition"),
             METHOD(&RasterLayer::getRasterBrightnessMin, "nativeGetRasterBrightnessMin"),
-
             METHOD(&RasterLayer::getRasterBrightnessMaxTransition, "nativeGetRasterBrightnessMaxTransition"),
             METHOD(&RasterLayer::setRasterBrightnessMaxTransition, "nativeSetRasterBrightnessMaxTransition"),
             METHOD(&RasterLayer::getRasterBrightnessMax, "nativeGetRasterBrightnessMax"),
-
             METHOD(&RasterLayer::getRasterSaturationTransition, "nativeGetRasterSaturationTransition"),
             METHOD(&RasterLayer::setRasterSaturationTransition, "nativeSetRasterSaturationTransition"),
             METHOD(&RasterLayer::getRasterSaturation, "nativeGetRasterSaturation"),
-
             METHOD(&RasterLayer::getRasterContrastTransition, "nativeGetRasterContrastTransition"),
             METHOD(&RasterLayer::setRasterContrastTransition, "nativeSetRasterContrastTransition"),
             METHOD(&RasterLayer::getRasterContrast, "nativeGetRasterContrast"),
-
             METHOD(&RasterLayer::getRasterFadeDurationTransition, "nativeGetRasterFadeDurationTransition"),
             METHOD(&RasterLayer::setRasterFadeDurationTransition, "nativeSetRasterFadeDurationTransition"),
             METHOD(&RasterLayer::getRasterFadeDuration, "nativeGetRasterFadeDuration"));

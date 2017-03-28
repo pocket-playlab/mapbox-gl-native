@@ -72,9 +72,10 @@ namespace android {
         mbgl::style::TransitionOptions options = {mbgl::Duration(duration), mbgl::Duration(delay)};
         layer.as<mbgl::style::<%- camelize(type) %>Layer>()-><%- camelize(type) %>Layer::set<%- camelize(property.name) %>Transition(options);
     }
-<% } -%>
 
 <% } -%>
+<% } -%>
+
     jni::Class<<%- camelize(type) %>Layer> <%- camelize(type) %>Layer::javaClass;
 
     jni::jobject* <%- camelize(type) %>Layer::createJavaPeer(jni::JNIEnv& env) {
@@ -98,13 +99,11 @@ namespace android {
 <% } -%>
             "initialize",
             "finalize",<% for(var i = 0; i < properties.length; i++) {%>
-
 <% if (properties[i].transition) { -%>
             METHOD(&<%- camelize(type) %>Layer::get<%- camelize(properties[i].name) %>Transition, "nativeGet<%- camelize(properties[i].name) %>Transition"),
             METHOD(&<%- camelize(type) %>Layer::set<%- camelize(properties[i].name) %>Transition, "nativeSet<%- camelize(properties[i].name) %>Transition"),
 <% } -%>
-            METHOD(&<%- camelize(type) %>Layer::get<%- camelize(properties[i].name) %>, "nativeGet<%- camelize(properties[i].name) %>")<% if(i != (properties.length -1)) {-%>,<% } -%>
-<% } -%>);
+            METHOD(&<%- camelize(type) %>Layer::get<%- camelize(properties[i].name) %>, "nativeGet<%- camelize(properties[i].name) %>")<% if(i != (properties.length -1)) {-%>,<% } -%><% } -%>);
     }
 
 } // namespace android

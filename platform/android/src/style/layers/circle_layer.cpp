@@ -161,13 +161,11 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-
     jni::Object<jni::ObjectTag> CircleLayer::getCirclePitchScale(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCirclePitchScale());
         return jni::Object<jni::ObjectTag>(*converted);
     }
-
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleStrokeWidth(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
@@ -241,6 +239,7 @@ namespace android {
         layer.as<mbgl::style::CircleLayer>()->CircleLayer::setCircleStrokeOpacityTransition(options);
     }
 
+
     jni::Class<CircleLayer> CircleLayer::javaClass;
 
     jni::jobject* CircleLayer::createJavaPeer(jni::JNIEnv& env) {
@@ -260,39 +259,29 @@ namespace android {
             std::make_unique<CircleLayer, JNIEnv&, jni::String, jni::String>,
             "initialize",
             "finalize",
-
             METHOD(&CircleLayer::getCircleRadiusTransition, "nativeGetCircleRadiusTransition"),
             METHOD(&CircleLayer::setCircleRadiusTransition, "nativeSetCircleRadiusTransition"),
             METHOD(&CircleLayer::getCircleRadius, "nativeGetCircleRadius"),
-
             METHOD(&CircleLayer::getCircleColorTransition, "nativeGetCircleColorTransition"),
             METHOD(&CircleLayer::setCircleColorTransition, "nativeSetCircleColorTransition"),
             METHOD(&CircleLayer::getCircleColor, "nativeGetCircleColor"),
-
             METHOD(&CircleLayer::getCircleBlurTransition, "nativeGetCircleBlurTransition"),
             METHOD(&CircleLayer::setCircleBlurTransition, "nativeSetCircleBlurTransition"),
             METHOD(&CircleLayer::getCircleBlur, "nativeGetCircleBlur"),
-
             METHOD(&CircleLayer::getCircleOpacityTransition, "nativeGetCircleOpacityTransition"),
             METHOD(&CircleLayer::setCircleOpacityTransition, "nativeSetCircleOpacityTransition"),
             METHOD(&CircleLayer::getCircleOpacity, "nativeGetCircleOpacity"),
-
             METHOD(&CircleLayer::getCircleTranslateTransition, "nativeGetCircleTranslateTransition"),
             METHOD(&CircleLayer::setCircleTranslateTransition, "nativeSetCircleTranslateTransition"),
             METHOD(&CircleLayer::getCircleTranslate, "nativeGetCircleTranslate"),
-
             METHOD(&CircleLayer::getCircleTranslateAnchor, "nativeGetCircleTranslateAnchor"),
-
             METHOD(&CircleLayer::getCirclePitchScale, "nativeGetCirclePitchScale"),
-
             METHOD(&CircleLayer::getCircleStrokeWidthTransition, "nativeGetCircleStrokeWidthTransition"),
             METHOD(&CircleLayer::setCircleStrokeWidthTransition, "nativeSetCircleStrokeWidthTransition"),
             METHOD(&CircleLayer::getCircleStrokeWidth, "nativeGetCircleStrokeWidth"),
-
             METHOD(&CircleLayer::getCircleStrokeColorTransition, "nativeGetCircleStrokeColorTransition"),
             METHOD(&CircleLayer::setCircleStrokeColorTransition, "nativeSetCircleStrokeColorTransition"),
             METHOD(&CircleLayer::getCircleStrokeColor, "nativeGetCircleStrokeColor"),
-
             METHOD(&CircleLayer::getCircleStrokeOpacityTransition, "nativeGetCircleStrokeOpacityTransition"),
             METHOD(&CircleLayer::setCircleStrokeOpacityTransition, "nativeSetCircleStrokeOpacityTransition"),
             METHOD(&CircleLayer::getCircleStrokeOpacity, "nativeGetCircleStrokeOpacity"));
