@@ -20,7 +20,10 @@ class TransformState {
     friend class Transform;
 
 public:
-    TransformState(ConstrainMode = ConstrainMode::HeightOnly, ViewportMode = ViewportMode::Default);
+    constexpr TransformState() = default;
+
+    constexpr TransformState(ConstrainMode constrain_, ViewportMode viewport_)
+        : constrainMode(constrain_), viewportMode(viewport_) {}
 
     // Matrix
     void matrixFor(mat4&, const UnwrappedTileID&) const;
@@ -74,13 +77,17 @@ public:
     double zoomScale(double zoom) const;
     double scaleZoom(double scale) const;
 
+    constexpr explicit operator bool() const {
+        return size && (scale >= min_scale && scale <= max_scale);
+    }
+
 private:
     bool rotatedNorth() const;
     void constrain(double& scale, double& x, double& y) const;
 
     // Limit the amount of zooming possible on the map.
-    double min_scale = std::pow(2, 0);
-    double max_scale = std::pow(2, 20);
+    double min_scale = 1.0; // 2^0
+    double max_scale = 1048576.0; // 2^20
 
     NorthOrientation orientation = NorthOrientation::Upwards;
 
@@ -97,8 +104,8 @@ private:
     void setScalePoint(const double scale, const ScreenCoordinate& point);
 
 private:
-    ConstrainMode constrainMode;
-    ViewportMode viewportMode;
+    ConstrainMode constrainMode = ConstrainMode::HeightOnly;
+    ViewportMode viewportMode = ViewportMode::Default;
 
     // animation state
     bool rotating = false;

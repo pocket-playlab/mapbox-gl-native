@@ -13,7 +13,7 @@ namespace mbgl {
 class Projection {
 public:
     // Map pixel width at given scale.
-    static double worldSize(double scale) {
+    static constexpr double worldSize(double scale) {
         return scale * util::tileSize;
     }
 
