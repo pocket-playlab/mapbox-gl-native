@@ -46,6 +46,10 @@ Transform::Transform(MapObserver& observer_,
 #pragma mark - Map View
 
 bool Transform::resize(const Size size) {
+    if (!size) {
+        return false;
+    }
+
     if (state.size == size) {
         return false;
     }

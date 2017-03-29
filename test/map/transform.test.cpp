@@ -506,40 +506,28 @@ TEST(Transform, Camera) {
 
 TEST(Transform, DefaultTransform) {
     Transform transform;
-    const TransformState& state = transform.getState();
 
-    LatLng nullIsland, latLng = {};
-    ScreenCoordinate center, point = {};
+    const TransformState& state = transform.getState();
+    ASSERT_FALSE(state);
+
     const uint32_t min = 0;
     const uint32_t max = 65535;
 
-    auto testConversions = [&](const LatLng& coord, const ScreenCoordinate& screenCoord) {
-        latLng = state.screenCoordinateToLatLng(center);
-        ASSERT_NEAR(latLng.latitude, coord.latitude, 0.000001);
-        ASSERT_NEAR(latLng.longitude, coord.longitude, 0.000001);
-        point = state.latLngToScreenCoordinate(nullIsland);
-        ASSERT_DOUBLE_EQ(point.x, screenCoord.x);
-        ASSERT_DOUBLE_EQ(point.y, screenCoord.y);
-    };
-
-    testConversions(nullIsland, center);
-
-    // Cannot assign the current size.
+    // Cannot assign invalid sizes.
     ASSERT_FALSE(transform.resize({}));
+    ASSERT_FALSE(transform.resize({ min, max }));
+    ASSERT_FALSE(transform.resize({ max, min }));
 
-    ASSERT_TRUE(transform.resize({ min, max }));
-    testConversions(nullIsland, center);
-
-    ASSERT_TRUE(transform.resize({ max, min }));
-    testConversions(nullIsland, center);
-
-    ASSERT_TRUE(transform.resize({ min, min }));
-    testConversions(nullIsland, center);
-
-    center = { max / 2., max / 2. };
+    ASSERT_TRUE(transform.resize({ max, max }));
+    ASSERT_TRUE(state);
 
     // Double resize
-    ASSERT_TRUE(transform.resize({ max, max }));
     ASSERT_FALSE(transform.resize({ max, max }));
-    testConversions(nullIsland, center);
+
+    ScreenCoordinate center = { max / 2., max / 2. };
+    LatLng latLng = state.screenCoordinateToLatLng(center);
+    ASSERT_NEAR(latLng.latitude, 0.0, 1e-7);
+    ASSERT_NEAR(latLng.longitude, 0.0, 1e-7);
+
+    ASSERT_EQ(state.latLngToScreenCoordinate({}), center);
 }

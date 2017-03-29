@@ -21,6 +21,9 @@ void TransformState::matrixFor(mat4& matrix, const UnwrappedTileID& tileID) cons
 }
 
 void TransformState::getProjMatrix(mat4& projMatrix) const {
+    if (!size) {
+        return;
+    }
 
      // Find the distance from the center point [width/2, height/2] to the
     // center top point [width/2, 0] in Z units, using the law of sines.
