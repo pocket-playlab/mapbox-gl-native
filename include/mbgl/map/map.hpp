@@ -109,9 +109,11 @@ public:
     CameraOptions cameraForLatLngs(const std::vector<LatLng>&, optional<EdgeInsets>) const;
     LatLngBounds latLngBoundsForCamera(const CameraOptions&) const;
     void resetZoom();
-    void setMinZoom(const double minZoom);
+
+    // Bounds
+    void setMinZoom(double minZoom);
     double getMinZoom() const;
-    void setMaxZoom(const double maxZoom);
+    void setMaxZoom(double maxZoom);
     double getMaxZoom() const;
 
     // Rotation
