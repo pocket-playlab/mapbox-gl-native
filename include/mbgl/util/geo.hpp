@@ -23,17 +23,19 @@ class LatLng {
 public:
     struct null {};
 
-    double latitude;
-    double longitude;
+    double latitude = 0;
+    double longitude = 0;
 
     enum WrapMode : bool { Unwrapped, Wrapped };
 
-    LatLng(null) : latitude(std::numeric_limits<double>::quiet_NaN()), longitude(latitude) {}
+    constexpr LatLng() = default;
 
-    LatLng(double lat = 0, double lon = 0, WrapMode mode = Unwrapped)
+    constexpr LatLng(null) : latitude(std::numeric_limits<double>::quiet_NaN()), longitude(latitude) {}
+
+    constexpr LatLng(double lat, double lon, WrapMode mode = Unwrapped)
         : latitude(lat), longitude(lon) { if (mode == Wrapped) wrap(); }
 
-    LatLng wrapped() const { return { latitude, longitude, Wrapped }; }
+    constexpr LatLng wrapped() const { return { latitude, longitude, Wrapped }; }
 
     void wrap() {
         longitude = util::wrap(longitude, -util::LONGITUDE_MAX, util::LONGITUDE_MAX);
@@ -67,10 +69,12 @@ constexpr bool operator!=(const LatLng& a, const LatLng& b) {
 
 class ProjectedMeters {
 public:
-    double northing;
-    double easting;
+    double northing = 0;
+    double easting = 0;
 
-    ProjectedMeters(double n = 0, double e = 0)
+    constexpr ProjectedMeters() = default;
+
+    constexpr ProjectedMeters(double n, double e)
         : northing(n), easting(e) {}
 
     explicit operator bool() const {
@@ -85,12 +89,12 @@ constexpr bool operator==(const ProjectedMeters& a, const ProjectedMeters& b) {
 class LatLngBounds {
 public:
     // Return a bounds covering the entire (unwrapped) world.
-    static LatLngBounds world() {
+    static constexpr LatLngBounds world() {
         return LatLngBounds({-90, -180}, {90, 180});
     }
 
     // Return the bounds consisting of the single point.
-    static LatLngBounds singleton(const LatLng& a) {
+    static constexpr LatLngBounds singleton(const LatLng& a) {
         return LatLngBounds(a, a);
     }
 
@@ -103,13 +107,17 @@ public:
 
     // Return a bounds that may serve as the identity element for the extend operation.
     static LatLngBounds empty() {
-        LatLngBounds bounds = world();
+        LatLngBounds bounds = LatLngBounds::world();
         std::swap(bounds.sw, bounds.ne);
         return bounds;
     }
 
     // Constructs a LatLngBounds object with the tile's exact boundaries.
     LatLngBounds(const CanonicalTileID&);
+
+    explicit operator bool() const {
+        return (sw.latitude <= ne.latitude) && (sw.longitude <= ne.longitude);
+    }
 
     double south() const { return sw.latitude; }
     double west()  const { return sw.longitude; }
@@ -124,6 +132,16 @@ public:
     LatLng center() const {
         return LatLng((sw.latitude + ne.latitude) / 2,
                       (sw.longitude + ne.longitude) / 2);
+    }
+
+    LatLng constrain(const LatLng& p) const {
+        if (contains(p)) {
+            return p;
+        }
+        return LatLng {
+            p.latitude < sw.latitude ? sw.latitude : p.latitude > ne.latitude ? ne.latitude : p.latitude,
+            p.longitude < sw.longitude ? sw.longitude : p.longitude > ne.longitude ? ne.longitude : p.longitude,
+        };
     }
 
     void extend(const LatLng& point) {
@@ -161,7 +179,7 @@ private:
     LatLng sw;
     LatLng ne;
 
-    LatLngBounds(LatLng sw_, LatLng ne_)
+    constexpr LatLngBounds(LatLng sw_, LatLng ne_)
         : sw(std::move(sw_)), ne(std::move(ne_)) {}
 
     friend constexpr bool operator==(const LatLngBounds&, const LatLngBounds&);
@@ -192,9 +210,9 @@ public:
     double bottom = 0; // Number of pixels inset from the bottom edge.
     double right = 0;  // Number of pixels inset from the right edge.
 
-    EdgeInsets() {}
+    constexpr EdgeInsets() = default;
 
-    EdgeInsets(const double t, const double l, const double b, const double r)
+    constexpr EdgeInsets(const double t, const double l, const double b, const double r)
         : top(t), left(l), bottom(b), right(r) {}
 
     explicit operator bool() const {
