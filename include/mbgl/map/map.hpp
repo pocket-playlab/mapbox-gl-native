@@ -111,6 +111,8 @@ public:
     void resetZoom();
 
     // Bounds
+    void setLatLngBounds(const LatLngBounds&);
+    LatLngBounds getLatLngBounds() const;
     void setMinZoom(double minZoom);
     double getMinZoom() const;
     void setMaxZoom(double maxZoom);
