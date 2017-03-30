@@ -9,7 +9,7 @@
 
 #include <jni/jni.hpp>
 #include "../../jni/local_object.hpp"
-#include "../layers/transition_options.hpp"
+#include "../transition_options.hpp"
 
 #include <string>
 #include <array>
@@ -37,6 +37,7 @@ struct Converter<jni::Object<TransitionOptions>, mbgl::style::TransitionOptions>
         return TransitionOptions::fromTransitionOptions(env, duration, delay);
     }
 };
+
 }
 }
 }

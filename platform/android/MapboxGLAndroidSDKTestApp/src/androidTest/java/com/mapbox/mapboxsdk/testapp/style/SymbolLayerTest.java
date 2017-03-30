@@ -1487,7 +1487,6 @@ public class SymbolLayerTest extends BaseStyleTest {
     assertEquals(1, ((ExponentialStops) layer.getTextOffset().getFunction().getStops()).size());
   }
 
-
   @Test
   public void testTextOffsetAsIdentitySourceFunction() {
     checkViewIsDisplayed(R.id.mapView);
@@ -1532,6 +1531,7 @@ public class SymbolLayerTest extends BaseStyleTest {
     assertEquals("FeaturePropertyA", ((SourceFunction) layer.getTextOffset().getFunction()).getProperty());
     assertEquals(IntervalStops.class, layer.getTextOffset().getFunction().getStops().getClass());
   }
+
 
   @Test
   public void testTextAllowOverlapAsConstant() {

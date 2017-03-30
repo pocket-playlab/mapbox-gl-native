@@ -1,13 +1,11 @@
 // This file is generated. Edit android/platform/scripts/generate-style-code.js, then run `make android-style-code`.
 
 #include "line_layer.hpp"
-#include "../conversion/transition_options.hpp"
-#include <mbgl/style/transition_options.hpp>
-
 
 #include <string>
 
 #include "../conversion/property_value.hpp"
+#include "../conversion/transition_options.hpp"
 
 namespace mbgl {
 namespace android {
@@ -67,11 +65,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineOpacityTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineOpacityTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineOpacityTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -85,11 +82,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineColorTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineColorTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineColorTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineColorTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -103,11 +99,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineTranslateTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineTranslateTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineTranslateTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineTranslateTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -127,11 +122,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineWidthTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineWidthTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineWidthTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineWidthTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -145,11 +139,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineGapWidthTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineGapWidthTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineGapWidthTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineGapWidthTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -163,11 +156,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineOffsetTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineOffsetTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineOffsetTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineOffsetTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -181,11 +173,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineBlurTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineBlurTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineBlurTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineBlurTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -199,11 +190,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLineDasharrayTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLineDasharrayTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLineDasharrayTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLineDasharrayTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -217,11 +207,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> LineLayer::getLinePatternTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> LineLayer::getLinePatternTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::LineLayer>()->LineLayer::getLinePatternTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void LineLayer::setLinePatternTransition(jni::JNIEnv&, jlong duration, jlong delay) {

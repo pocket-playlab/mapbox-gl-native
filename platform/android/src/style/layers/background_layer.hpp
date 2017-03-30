@@ -3,6 +3,7 @@
 #pragma once
 
 #include "layer.hpp"
+#include "../transition_options.hpp"
 #include <mbgl/style/layers/background_layer.hpp>
 #include <jni/jni.hpp>
 
@@ -30,15 +31,15 @@ public:
 
     jni::Object<jni::ObjectTag> getBackgroundColor(jni::JNIEnv&);
     void setBackgroundColorTransition(jni::JNIEnv&, jlong duration, jlong delay);
-    jni::Object<jni::ObjectTag> getBackgroundColorTransition(jni::JNIEnv&);
+    jni::Object<TransitionOptions> getBackgroundColorTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getBackgroundPattern(jni::JNIEnv&);
     void setBackgroundPatternTransition(jni::JNIEnv&, jlong duration, jlong delay);
-    jni::Object<jni::ObjectTag> getBackgroundPatternTransition(jni::JNIEnv&);
+    jni::Object<TransitionOptions> getBackgroundPatternTransition(jni::JNIEnv&);
 
     jni::Object<jni::ObjectTag> getBackgroundOpacity(jni::JNIEnv&);
     void setBackgroundOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay);
-    jni::Object<jni::ObjectTag> getBackgroundOpacityTransition(jni::JNIEnv&);
+    jni::Object<TransitionOptions> getBackgroundOpacityTransition(jni::JNIEnv&);
     jni::jobject* createJavaPeer(jni::JNIEnv&);
 
 }; // class BackgroundLayer

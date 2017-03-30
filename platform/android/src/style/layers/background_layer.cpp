@@ -1,13 +1,11 @@
 // This file is generated. Edit android/platform/scripts/generate-style-code.js, then run `make android-style-code`.
 
 #include "background_layer.hpp"
-#include "../conversion/transition_options.hpp"
-#include <mbgl/style/transition_options.hpp>
-
 
 #include <string>
 
 #include "../conversion/property_value.hpp"
+#include "../conversion/transition_options.hpp"
 
 namespace mbgl {
 namespace android {
@@ -43,11 +41,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> BackgroundLayer::getBackgroundColorTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> BackgroundLayer::getBackgroundColorTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::BackgroundLayer>()->BackgroundLayer::getBackgroundColorTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void BackgroundLayer::setBackgroundColorTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -61,11 +58,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> BackgroundLayer::getBackgroundPatternTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> BackgroundLayer::getBackgroundPatternTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::BackgroundLayer>()->BackgroundLayer::getBackgroundPatternTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void BackgroundLayer::setBackgroundPatternTransition(jni::JNIEnv&, jlong duration, jlong delay) {
@@ -79,11 +75,10 @@ namespace android {
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
-    jni::Object<jni::ObjectTag> BackgroundLayer::getBackgroundOpacityTransition(jni::JNIEnv& env) {
+    jni::Object<TransitionOptions> BackgroundLayer::getBackgroundOpacityTransition(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
         mbgl::style::TransitionOptions options = layer.as<mbgl::style::BackgroundLayer>()->BackgroundLayer::getBackgroundOpacityTransition();
-        Result<jni::jobject*> converted = convert<jni::jobject*>(env, options);
-        return jni::Object<jni::ObjectTag>(*converted);
+        return *convert<jni::Object<TransitionOptions>>(env, options);
     }
 
     void BackgroundLayer::setBackgroundOpacityTransition(jni::JNIEnv&, jlong duration, jlong delay) {
